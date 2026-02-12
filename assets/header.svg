@@ -1,31 +1,18 @@
-<svg fill="none" viewBox="0 0 800 200" width="800" height="200" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <style>
-        .container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-        }
-        pre {
-          font-family: monospace;
-          color: #7F39FB; /* Purple logic color */
-          font-weight: bold;
-          font-size: 16px;
-          text-align: left;
-        }
-      </style>
-      <div class="container">
-        <pre>
-  __  __            _        _   ____        _       
- |  \/  | __ _ _ __| | _____| |_| __ ) _   _| |_ ___ 
- | |\/| |/ _` | '__| |/ / _ \ __|  _ \| | | | __/ _ \
- | |  | | (_| | |  |   <  __/ |_| |_) | |_| | ||  __/
- |_|  |_|\__,_|_|  |_|\_\___|\__|____/ \__, |\__\___|
-                                       |___/         
-        </pre>
-      </div>
-    </div>
-  </foreignObject>
+<svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .ascii-art {
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: bold;
+      fill: #7F39FB;
+    }
+  </style>
+  <text x="50%" y="20" text-anchor="middle" class="ascii-art" xml:space="preserve">
+    <tspan x="50%" dy="0">  __  __            _        _   ____        _       </tspan>
+    <tspan x="50%" dy="1.2em"> |  \/  | __ _ _ __| | _____| |_| __ ) _   _| |_ ___ </tspan>
+    <tspan x="50%" dy="1.2em"> | |\/| |/ _` | '__| |/ / _ \ __|  _ \| | | | __/ _ \</tspan>
+    <tspan x="50%" dy="1.2em"> | |  | | (_| | |  |   &lt;  __/ |_| |_) | |_| | ||  __/</tspan>
+    <tspan x="50%" dy="1.2em"> |_|  |_|\__,_|_|  |_|\_\___|\__|____/ \__, |\__\___|</tspan>
+    <tspan x="50%" dy="1.2em">                                       |___/         </tspan>
+  </text>
 </svg>
