@@ -1,21 +1,8 @@
 <div align="center">
 
-```mermaid
-graph TD
-    %% Hack: Using mermaid graph title solely for purple-styled text render (if supported) isn't standard,
-    %% so we stick to standard ASCII text below but wrapped in a specific language block for potential coloration.
-```
+<img src="assets/header.svg" alt="MarketByte ASCII Art" width="600"/>
 
-```text
-  __  __            _        _   ____        _
- |  \/  | __ _ _ __| | _____| |_| __ ) _   _| |_ ___
- | |\/| |/ _` | '__| |/ / _ \ __|  _ \| | | | __/ _ \
- | |  | | (_| | |  |   <  __/ |_| |_) | |_| | ||  __/
- |_|  |_|\__,_|_|  |_|\_\___|\__|____/ \__, |\__\___|
-                                       |___/
-```
-
-# MarketByte: The Financial Co-Pilot
+# 💜 MarketByte: The Financial Co-Pilot 💜
 
 ### _Democratizing Financial Literacy for Retail Investors_
 
