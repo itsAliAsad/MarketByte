@@ -1,5 +1,4 @@
 <div align="center">
-<<<<<<< HEAD
 <img src="assets/header.svg" alt="MarketByte ASCII Art" width="600"/>
 
 ### _Democratizing Financial Literacy for Retail Investors_
