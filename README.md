@@ -1,19 +1,6 @@
 <div align="center">
 <<<<<<< HEAD
 <img src="assets/header.svg" alt="MarketByte ASCII Art" width="600"/>
-=======
-
-```text
-  __  __            _        _   ____        _
- |  \/  | __ _ _ __| | _____| |_| __ ) _   _| |_ ___
- | |\/| |/ _` | '__| |/ / _ \ __|  _ \| | | | __/ _ \
- | |  | | (_| | |  |   <  __/ |_| |_) | |_| | ||  __/
- |_|  |_|\__,_|_|  |_|\_\___|\__|____/ \__, |\__\___|
-                                       |___/
-```
-
-# MarketByte: The Financial Co-Pilot
->>>>>>> 62ef1a1 (docs: Add initial project documentation including user stories, testing specifications, product requirements, and system architecture.)
 
 ### _Democratizing Financial Literacy for Retail Investors_
 
@@ -31,8 +18,6 @@ _Track: Daily Life Enhancement / Workplace Efficiency_
 <br/>
 
 </div>
-
----
 
 ## 🟣 Executive Summary
 
@@ -117,58 +102,6 @@ _Neural Network Forecasting_
 - **Output**: "Breaking news regarding [Event] has an 88% similarity to [Past Event]. Expect volatility."
 
 ---
-
-## 🟣 Technical Architecture
-
-MarketByte utilizes a fully **serverless, event-driven architecture** built on AWS. This ensures scalability and cost-effectiveness.
-
-```mermaid
-graph TD
-    subgraph "Client Layer"
-        WA[WhatsApp User]
-        Web[Web Dashboard User]
-    end
-
-    subgraph Authentication
-        Cognito[AWS Cognito]
-    end
-
-    subgraph "Entry Point"
-        META[WhatsApp Business API]
-        APIGW[AWS API Gateway]
-    end
-
-    subgraph "Compute & Logic"
-        OnboardLambda[Onboarding Lambda]
-        DailyLambda[Daily Brief Orchestrator]
-        XRayLambda[X-Ray Service]
-        ScraperLambda[Data Scraper]
-    end
-
-    subgraph Intelligence
-        Bedrock[Amazon Bedrock<br>(Claude 3 Haiku)]
-        SageMaker[Amazon SageMaker<br>(Predictive NN)]
-    end
-
-    subgraph "Data Persistence"
-        DDB[(Amazon DynamoDB)]
-        S3[(S3 Data Lake)]
-    end
-
-    WA -->|Messages| META
-    META -->|Webhook| APIGW
-    Web -->|Auth/Link| Cognito
-
-    APIGW -->|Route| OnboardLambda
-    APIGW -->|Route| XRayLambda
-
-    DailyLambda -->|Schedule| Bedrock
-    DailyLambda -->|Send Brief| META
-
-    ScraperLambda -->|Fetch Data| DDB
-    ScraperLambda -->|Archive| S3
-    S3 -->|Train| SageMaker
-```
 
 ### Tech Stack
 
