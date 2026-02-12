@@ -3,20 +3,7 @@
 <<<<<<< HEAD
 <img src="assets/header.svg" alt="MarketByte ASCII Art" width="600"/>
 
-# 💜 MarketByte: The Financial Co-Pilot 💜
 =======
-```text
-  __  __            _        _   ____        _
- |  \/  | __ _ _ __| | _____| |_| __ ) _   _| |_ ___
- | |\/| |/ _` | '__| |/ / _ \ __|  _ \| | | | __/ _ \
- | |  | | (_| | |  |   <  __/ |_| |_) | |_| | ||  __/
- |_|  |_|\__,_|_|  |_|\_\___|\__|____/ \__, |\__\___|
-                                       |___/
-```
-
-# MarketByte: The Financial Co-Pilot
->>>>>>> 087dc5842f539c50cb767924b95322764ff0d91f
-
 ### _Democratizing Financial Literacy for Retail Investors_
 
 [![AWS Bedrock](https://img.shields.io/badge/AWS-Bedrock-7F39FB?style=for-the-badge&logo=amazonaws)](https://aws.amazon.com/bedrock/)
