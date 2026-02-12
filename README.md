@@ -1,11 +1,5 @@
 <div align="center">
 
-```mermaid
-graph TD
-    %% Hack: Using mermaid graph title solely for purple-styled text render (if supported) isn't standard,
-    %% so we stick to standard ASCII text below but wrapped in a specific language block for potential coloration.
-```
-
 ```text
   __  __            _        _   ____        _
  |  \/  | __ _ _ __| | _____| |_| __ ) _   _| |_ ___
