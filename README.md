@@ -1,5 +1,19 @@
 <div align="center">
+<<<<<<< HEAD
 <img src="assets/header.svg" alt="MarketByte ASCII Art" width="600"/>
+=======
+
+```text
+  __  __            _        _   ____        _
+ |  \/  | __ _ _ __| | _____| |_| __ ) _   _| |_ ___
+ | |\/| |/ _` | '__| |/ / _ \ __|  _ \| | | | __/ _ \
+ | |  | | (_| | |  |   <  __/ |_| |_) | |_| | ||  __/
+ |_|  |_|\__,_|_|  |_|\_\___|\__|____/ \__, |\__\___|
+                                       |___/
+```
+
+# MarketByte: The Financial Co-Pilot
+>>>>>>> 62ef1a1 (docs: Add initial project documentation including user stories, testing specifications, product requirements, and system architecture.)
 
 ### _Democratizing Financial Literacy for Retail Investors_
 
@@ -24,7 +38,7 @@ _Track: Daily Life Enhancement / Workplace Efficiency_
 
 **MarketByte** (Code Name: _PSX-Brief_) is an AI-driven "Financial Co-Pilot" that lives inside WhatsApp. Our mission is to transform "blind" retail investors into informed wealth-builders by delivering personalized, jargon-free market intelligence that connects abstract indices to their daily lives.
 
-In a market where retail investors often panic-sell due to a lack of context, **MarketByte** provides a frictionless bridge between complex financial data and actionable insights.
+By leveraging **AWS Bedrock (GenAI)** and **Serverless Architecture**, MarketByte filters the noise of the financial world, delivering only what matters to _your_ portfolio.
 
 > **"From panic-selling to data-driven confidence."**
 
@@ -71,11 +85,16 @@ _Delivered at 9:00 AM (Pre-market) or 5:00 PM (Post-market)_
 
 ### 2. 🔍 Portfolio X-Ray
 
+_Demystifying Mutual Funds_
+
 - **Logic**: Maps _Fund Name_ -> _Top 10 Holdings_.
 - **User Action**: Reply "XRAY".
 - **Response**: "You own Meezan Islamic Fund. This means you actually own: 1. Meezan Bank (15%), 2. Lucky Cement (8%)..."
+- **Sector Breakdown**: Shows exposure (e.g., "40% Banks, 20% Oil").
 
 ### 3. 📡 Opportunity Radar
+
+_Data-Driven Discovery_
 
 - **Logic**: Daily script filters stocks based on P/E < Sector Avg, Yield > 10%, RSI < 30.
 - **User Action**: Reply "OPP".
@@ -83,58 +102,120 @@ _Delivered at 9:00 AM (Pre-market) or 5:00 PM (Post-market)_
 
 ### 4. 😰/🤑 Sentiment Analysis (Fear & Greed)
 
-- **Input**: Financial news + Social sentiment.
-- **Processing**: NLP scores from -1 (Extreme Fear) to +1 (Extreme Greed).
-- **Display**: Visual Emoji Meter to help time the market.
+_The "Vibe Check"_
+
+- **Input**: Financial news + Social sentiment (#PSX, #KSE100).
+- **Processing**: NLP model scores sentiment from -1 (Fear) to +1 (Greed).
+- **Display**: Visual Emoji Meter (😰 vs 🤑) to help time the market.
+
+### 5. 🔮 AI Predictive Alerts
+
+_Neural Network Forecasting_
+
+- **Model**: Trained on 10 years of historical data (Tweets, Reports, Prices).
+- **Action**: Alert triggers if prediction confidence > 85%.
+- **Output**: "Breaking news regarding [Event] has an 88% similarity to [Past Event]. Expect volatility."
 
 ---
 
 ## 🟣 Technical Architecture
 
-MarketByte leverages the power of the **AWS Free Tier** to deliver enterprise-grade AI analysis at zero initial cost.
+MarketByte utilizes a fully **serverless, event-driven architecture** built on AWS. This ensures scalability and cost-effectiveness.
+
+```mermaid
+graph TD
+    subgraph "Client Layer"
+        WA[WhatsApp User]
+        Web[Web Dashboard User]
+    end
+
+    subgraph Authentication
+        Cognito[AWS Cognito]
+    end
+
+    subgraph "Entry Point"
+        META[WhatsApp Business API]
+        APIGW[AWS API Gateway]
+    end
+
+    subgraph "Compute & Logic"
+        OnboardLambda[Onboarding Lambda]
+        DailyLambda[Daily Brief Orchestrator]
+        XRayLambda[X-Ray Service]
+        ScraperLambda[Data Scraper]
+    end
+
+    subgraph Intelligence
+        Bedrock[Amazon Bedrock<br>(Claude 3 Haiku)]
+        SageMaker[Amazon SageMaker<br>(Predictive NN)]
+    end
+
+    subgraph "Data Persistence"
+        DDB[(Amazon DynamoDB)]
+        S3[(S3 Data Lake)]
+    end
+
+    WA -->|Messages| META
+    META -->|Webhook| APIGW
+    Web -->|Auth/Link| Cognito
+
+    APIGW -->|Route| OnboardLambda
+    APIGW -->|Route| XRayLambda
+
+    DailyLambda -->|Schedule| Bedrock
+    DailyLambda -->|Send Brief| META
+
+    ScraperLambda -->|Fetch Data| DDB
+    ScraperLambda -->|Archive| S3
+    S3 -->|Train| SageMaker
+```
 
 ### Tech Stack
 
-- **Interface**: WhatsApp Business API (via Meta/Twilio)
-- **Backend Logic**: **AWS Lambda** (Python) for serverless execution.
-- **Database**: **Amazon DynamoDB** (NoSQL) for fast user profiling and portfolio mapping.
-- **AI/LLM**: **Amazon Bedrock** (Claude Haiku or Titan) for intelligent summarization and sentiment analysis.
-- **Data Source**: Custom Python Scraper targeting market data portals.
-
-### Data Flow
-
-1.  **Ingest**: Scraper fetches Market Summary + News + Fund Reports.
-2.  **Process**: Lambda cleans data.
-3.  **Analyze**: **Amazon Bedrock** analyzes sentiment and extracts entities.
-4.  **Match**: System queries **DynamoDB** for users matching extracted entities.
-5.  **Draft**: Bedrock generates a personalized 3-line summary.
-6.  **Deliver**: WhatsApp API sends the personalized payload.
+| Layer          | Technology                | Justification                                                |
+| :------------- | :------------------------ | :----------------------------------------------------------- |
+| **Frontend**   | **WhatsApp Business API** | Zero-install barrier; ubiquitous in Pakistan.                |
+| **Compute**    | **AWS Lambda (Python)**   | Serverless, pay-per-use, rich financial libraries.           |
+| **Database**   | **Amazon DynamoDB**       | Millisecond latency for user lookups; flexible schema.       |
+| **AI / LLM**   | **Amazon Bedrock**        | Claude 3 Haiku is fast and cost-effective for summarization. |
+| **Predictive** | **Amazon SageMaker**      | Hosts custom Neural Network for market trend prediction.     |
+| **Storage**    | **Amazon S3**             | Data lake for historical news, tweets, and reports.          |
 
 ---
 
-## 🟣 UX / Interaction Flow
+## 🟣 Data Sources & Integrity
 
-**Scenario: Morning Briefing**
+We believe in **Data over Hype**. Our system aggregates data from trusted sources:
 
-> **Bot**: ☀️ Good Morning Ali!
->
-> 📉 **KSE-100 is Down (-0.4%)** due to profit-taking before upcoming holidays.
->
-> **Your Portfolio News**:
-> 🏭 **Lucky Cement (LUCK)**: Announced a solar power plant. This cuts costs and improves long-term margins.
->
-> **Market Mood**: 😨 Fear (Score: 35/100).
->
-> 👇 _Tap below for more_
-> [ 🔍 Deep Dive LUCK ] [ 📊 High Yield Stocks ]
+| Data Point           | Source                                          |
+| :------------------- | :---------------------------------------------- |
+| **USD/PKR Rates**    | State Bank of Pakistan (SBP) Official Rates     |
+| **Market Prices**    | PSX Data Portal (DPS) - Real-time/Delayed       |
+| **Foreign Flows**    | NCCPL (FIPI/LIPI) Daily Reports                 |
+| **Corporate Action** | PSX Financial Announcements (Dividends/Bonuses) |
 
 ---
 
-## 🟣 Roadmap (Post-Hackathon)
+## 🟣 Roadmap
 
-- [ ] **Voice Notes**: Daily 30-second audio summary in Urdu/Regional languages. 🎙️
-- [ ] **Analyst Tool**: User sends a PDF annual report -> Bot summarizes it. 📄
-- [ ] **Broker Integration**: "One-tap" order placement (Regulatory Sandbox). 🏦
+### Phase 1: Hackathon MVP (Current)
+
+- [x] Core WhatsApp Bot Setup
+- [x] User Profiling (Mock Data)
+- [x] Daily Brief Generation (Text)
+- [x] Basic Portfolio X-Ray
+
+### Phase 2: Enhanced Features
+
+- [ ] Real-time API integration for stock prices
+- [ ] Sentiment Analysis integration
+- [ ] Advanced Fee Calculator
+
+### Phase 3: Post-Launch
+
+- [ ] Voice Note Summaries (Urdu/Regional) 🎙️
+- [ ] PDF Report Analyzer 📄
+- [ ] Direct Broker Integration 🏦
 
 ---
 
